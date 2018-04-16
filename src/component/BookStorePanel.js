@@ -9,10 +9,10 @@ const style = {
     display: 'inline-block',
 };
 
-const BookstorePanel = () => (
+const BookStorePanel = () => (
     <div>
         <Paper style={style} zDepth={1} />
     </div>
 );
 
-export default BookstorePanel;
+export default BookStorePanel;

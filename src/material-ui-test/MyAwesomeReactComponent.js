@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import BookstorePanel from '../component/bookstorepanel'
+import BookStorePanel from '../component/BookStorePanel'
 
 class MyAwesomeReactComponent extends Component {
 
@@ -14,7 +14,7 @@ class MyAwesomeReactComponent extends Component {
             <div>
                 <RaisedButton label="1234"
                               onClick={(event) => this.onClick(event.target)}/>
-                <BookstorePanel/>
+                <BookStorePanel/>
             </div>
         )
     }
