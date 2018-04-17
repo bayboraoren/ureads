@@ -13,15 +13,24 @@ const styles = theme => ({
 });
 
 
-function MainPage(props) {
+const MainPage = props => {
     const {classes} = props;
+
+    const bookShelveTitle = "BOOK SHELVE TITLE "
+
+    const bookShelveList = [
+        {"title": bookShelveTitle + 1},
+        {"title": bookShelveTitle + 2},
+        {"title": bookShelveTitle + 3}
+    ];
+
     return (
         <div className={classes.root}>
             <Grid container spacing={24}>
                 <Grid item xs={12}>
                     <BookStorePanel>
                         {/* BOOK SHELVE COMPONENT */}
-                        <BookShelvePanel title={"TITLE"}/>
+                        <BookShelvePanel bookShelveList={bookShelveList}/>
                     </BookStorePanel>
                 </Grid>
             </Grid>

@@ -16,24 +16,26 @@ const styles = theme => ({
 });
 
 const BookShelvePanel = (props) => {
-    const { classes,title } = props;
+    const { classes,bookShelveList } = props;
     return (
-        <div className={classes.root}>
-            <List>
-                <ListItem>
-                    <ListItemText primary={title} className={classes.titleClass}/>
-                </ListItem>
-                <li>
-                    <Divider inset />
-                </li>
-            </List>
-        </div>
+        bookShelveList.map((bookShelve,index)=>
+            <div key={index} className={classes.root}>
+                <List>
+                    <ListItem>
+                        <ListItemText primary={bookShelve.title} className={classes.titleClass}/>
+                    </ListItem>
+                    <li>
+                        <Divider inset />
+                    </li>
+                </List>
+            </div>
+        )
     );
 }
 
 BookShelvePanel.propTypes = {
     classes: PropTypes.object.isRequired,
-    title: PropTypes.string.isRequired
+    bookShelveList: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(BookShelvePanel);

@@ -6,29 +6,33 @@ import {Divider, ListItemText} from "material-ui";
 
 describe('<BookShelvePanel/>', () => {
 
-    //mandatory for BookShelvePanel
-    const givenTitle = "TITLE"
+    const bookShelveList = [{
+        "title":"TITLE 1"},
+        {"title":"TITLE 2"},
+        {"title":"TITLE 3"}
+    ];
+
+    const bookShelvePanel = mount(
+        <BookShelvePanel bookShelveList={bookShelveList}/>
+    )
 
     it('bookshelve panel is visible', () => {
-        const wrapper = mount(
-            <BookShelvePanel title={givenTitle}/>
-        );
-        expect(wrapper.find(BookShelvePanel).find(Divider)).to.have.length(1)
+        expect(bookShelvePanel.find(BookShelvePanel).find(Divider)).to.have.length(bookShelveList.length)
     })
 
     it('bookshelve title is given title', () => {
-        const wrapper = mount(
-            <BookShelvePanel title={givenTitle}/>
-        );
-        expect(wrapper.find(ListItemText).prop('primary')).to.equal(givenTitle)
+        expect(bookShelvePanel.find(ListItemText).first().prop('primary')).to.equal(bookShelveList[0].title)
+
     })
 
     it('bookshelve horizontal line is visible', () => {
-        const wrapper = mount(
-            <BookShelvePanel title={givenTitle}/>
-        );
-        expect(wrapper.find(Divider)).to.have.length(1)
+        expect(bookShelvePanel.find(Divider)).to.have.length(bookShelveList.length)
     })
 
+    it('bookshelve list occurs', () => {
+        const bookShelveListPanel = mount(
+            <BookShelvePanel bookShelveList={bookShelveList}/>
+        )
+    })
 
 })
