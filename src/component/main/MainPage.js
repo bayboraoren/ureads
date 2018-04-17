@@ -19,7 +19,7 @@ function MainPage(props) {
             <Grid container spacing={24}>
                 <Grid item xs={12}>
                     <BookStorePanel>
-                        /* BOOK SHELVE COMPONENT */
+                        {/* BOOK SHELVE COMPONENT */}
                     </BookStorePanel>
                 </Grid>
             </Grid>
