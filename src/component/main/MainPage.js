@@ -2,6 +2,7 @@ import React from 'react'
 import BookStorePanel from '../BookStorePanel'
 import Grid from 'material-ui/Grid';
 import {withStyles} from 'material-ui/styles';
+import BookShelvePanel from "../BookShelvePanel";
 
 const styles = theme => ({
     root: {
@@ -20,6 +21,7 @@ function MainPage(props) {
                 <Grid item xs={12}>
                     <BookStorePanel>
                         {/* BOOK SHELVE COMPONENT */}
+                        <BookShelvePanel title={"TITLE"}/>
                     </BookStorePanel>
                 </Grid>
             </Grid>

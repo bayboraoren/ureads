@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
     "chai": "latest",
     "chai-enzyme": "^1.0.0-beta.0",
     "enzyme": "^3.0.0",

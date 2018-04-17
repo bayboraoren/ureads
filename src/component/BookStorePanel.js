@@ -21,7 +21,7 @@ const styles = theme => ({
 });
 
 
-function BookStorePanel(props) {
+const BookStorePanel = (props) =>{
     const {classes} = props;
     return (
         <div className={classes.root}>
