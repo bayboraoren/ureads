@@ -1,29 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from 'material-ui/styles'
-import Paper from 'material-ui/Paper'
+import {Card, CardMedia, Grid, Paper} from "material-ui";
 
 
 const styles = theme => ({
-    paper: {
+    root: {
+        flexGrow: 1
+    },
+    card: {
         height: 300,
         width: 200,
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
         marginLeft: 80
-    }
+    },
+    media: {
+        height: 200,
+    },
 });
-
 
 const BookPanel = (props) => {
     const {classes} = props;
     return (
-        <div className={classes.root}>
+        <div>
             <br/>
-            <Paper className={classes.paper} elevation={1}>
-
-            </Paper>
+            <Card className={classes.card}>
+                {props.children}
+            </Card>
         </div>
     );
 }

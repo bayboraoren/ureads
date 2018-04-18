@@ -7,11 +7,11 @@ import BookPanel from "../../component/BookPanel";
 
 describe('<BookPanel/>', () => {
 
-    it('book panel is visible', () => {
-        const bookPanel = mount(
-            <BookPanel/>
+    const bookPanel = mount(
+        <BookPanel/>
+    );
 
-        );
+    it('book panel is visible', () => {
         expect(bookPanel.find(Paper)).to.have.length(1)
     })
 
