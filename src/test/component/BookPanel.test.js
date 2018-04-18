@@ -10,7 +10,6 @@ describe('<BookPanel/>', () => {
     const bookPanel = mount(
         <BookPanel/>
     );
-
     it('book panel is visible', () => {
         expect(bookPanel.find(Paper)).to.have.length(1)
     })
