@@ -8,8 +8,8 @@ import Grid from 'material-ui/Grid';
 
 const styles = theme => ({
     paper: {
-        height: 600,
-        width: 100,
+        height: '100%',
+        width: '95%',
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
@@ -27,7 +27,7 @@ const BookStorePanel = (props) =>{
         <div className={classes.root}>
             <Grid container spacing={24}>
                 <Grid item xs={12}>
-                    <Paper className={classes.root} elevation={1}>
+                    <Paper className={classes.paper} elevation={1}>
                         <Typography variant="headline" component="h3">
                             <span className={classes.bookStorePanelTitle}>
                                 BOOK STORE
