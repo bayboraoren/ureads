@@ -4,6 +4,7 @@ import Grid from 'material-ui/Grid';
 import {withStyles} from 'material-ui/styles';
 import BookShelvePanel from "../BookShelvePanel";
 import BookPanel from "../BookPanel";
+import BookPanelImage from "../BookPanelImage";
 
 const styles = theme => ({
     root: {
@@ -25,7 +26,8 @@ const MainPage = props => {
             "books": [
                 {
                     "name": "book 1",
-                    "author": "author 1"
+                    "author": "author 1",
+                    "imageUrl":"https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
                 }
             ]
         },
@@ -34,7 +36,8 @@ const MainPage = props => {
             "books": [
                 {
                     "name": "book 2",
-                    "author": "author 2"
+                    "author": "author 2",
+                    "imageUrl":"https://i.pinimg.com/originals/93/89/5a/93895a8c2e6f2684f46eed06be17b538.jpg"
                 }
             ]
         },
@@ -43,7 +46,8 @@ const MainPage = props => {
             "books": [
                 {
                     "name": "book 3",
-                    "author": "author 3"
+                    "author": "author 3",
+                    "imageUrl":"https://www.varsity.co.uk/images/derived/article-objects/md5-716243ff78e6aecd61d78a2c60616aee/2837.jpeg"
                 }
             ]
         }
@@ -54,9 +58,13 @@ const MainPage = props => {
             <Grid container spacing={24}>
                 <Grid item xs={12}>
                     <BookStorePanel>
-                        {bookShelveList.map((bookShelve) =>
+                        {bookShelveList.map((bookShelve,index) =>
                             <BookShelvePanel bookShelve={bookShelve}>
-                                <BookPanel/>
+                                {bookShelveList[index].books.map((book) =>
+                                    <BookPanel>
+                                        <BookPanelImage imageUrl={book.imageUrl}/>
+                                    </BookPanel>
+                                )}
                             </BookShelvePanel>
                         )}
                     </BookStorePanel>
