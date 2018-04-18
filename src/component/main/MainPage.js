@@ -3,6 +3,7 @@ import BookStorePanel from '../BookStorePanel'
 import Grid from 'material-ui/Grid';
 import {withStyles} from 'material-ui/styles';
 import BookShelvePanel from "../BookShelvePanel";
+import BookPanel from "../BookPanel";
 
 const styles = theme => ({
     root: {
@@ -19,9 +20,33 @@ const MainPage = props => {
     const bookShelveTitle = "BOOK SHELVE TITLE "
 
     const bookShelveList = [
-        {"title": bookShelveTitle + 1},
-        {"title": bookShelveTitle + 2},
-        {"title": bookShelveTitle + 3}
+        {
+            "title": bookShelveTitle + 1,
+            "books": [
+                {
+                    "name": "book 1",
+                    "author": "author 1"
+                }
+            ]
+        },
+        {
+            "title": bookShelveTitle + 2,
+            "books": [
+                {
+                    "name": "book 2",
+                    "author": "author 2"
+                }
+            ]
+        },
+        {
+            "title": bookShelveTitle + 3,
+            "books": [
+                {
+                    "name": "book 3",
+                    "author": "author 3"
+                }
+            ]
+        }
     ];
 
     return (
@@ -29,13 +54,15 @@ const MainPage = props => {
             <Grid container spacing={24}>
                 <Grid item xs={12}>
                     <BookStorePanel>
-                        {/* BOOK SHELVE COMPONENT */}
-                        <BookShelvePanel bookShelveList={bookShelveList}/>
+                        {bookShelveList.map((bookShelve) =>
+                            <BookShelvePanel bookShelve={bookShelve}>
+                                <BookPanel/>
+                            </BookShelvePanel>
+                        )}
                     </BookStorePanel>
                 </Grid>
             </Grid>
         </div>
-
     )
 }
 

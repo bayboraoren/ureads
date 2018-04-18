@@ -13,26 +13,21 @@ describe('<BookShelvePanel/>', () => {
     ];
 
     const bookShelvePanel = mount(
-        <BookShelvePanel bookShelveList={bookShelveList}/>
+        <BookShelvePanel bookShelve={bookShelveList[0]}/>
     )
 
     it('bookshelve panel is visible', () => {
-        expect(bookShelvePanel.find(BookShelvePanel).find(Divider)).to.have.length(bookShelveList.length)
+        expect(bookShelvePanel.find(BookShelvePanel).find(Divider)).to.have.length(1)
     })
 
     it('bookshelve title is given title', () => {
-        expect(bookShelvePanel.find(ListItemText).first().prop('primary')).to.equal(bookShelveList[0].title)
+        expect(bookShelvePanel.find(ListItemText).prop('primary')).to.equal(bookShelveList[0].title)
 
     })
 
     it('bookshelve horizontal line is visible', () => {
-        expect(bookShelvePanel.find(Divider)).to.have.length(bookShelveList.length)
+        expect(bookShelvePanel.find(Divider)).to.have.length(1)
     })
 
-    it('bookshelve list occurs', () => {
-        const bookShelveListPanel = mount(
-            <BookShelvePanel bookShelveList={bookShelveList}/>
-        )
-    })
 
 })
