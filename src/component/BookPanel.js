@@ -9,7 +9,6 @@ const styles = theme => ({
         flexGrow: 1
     },
     card: {
-        height: 300,
         width: 200,
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
