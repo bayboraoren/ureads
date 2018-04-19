@@ -6,12 +6,12 @@ import PropTypes from "prop-types";
 
 const styles = theme => ({})
 
-const BookName = (props) => {
+const BookWriter = (props) => {
 
     const {name} = props
 
     return (
-        <Typography variant="title">
+        <Typography variant="subheading" color="textSecondary">
             {name}
         </Typography>
     )
@@ -19,9 +19,9 @@ const BookName = (props) => {
 
 }
 
-BookName.propTypes = {
+BookWriter.propTypes = {
     name: PropTypes.string.isRequired
 };
 
 
-export default withStyles(styles)(BookName);
+export default withStyles(styles)(BookWriter);

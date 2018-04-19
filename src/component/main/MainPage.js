@@ -6,6 +6,7 @@ import BookShelvePanel from "../BookShelvePanel";
 import BookPanelImage from "../BookPanelImage";
 import BookName from "../BookName";
 import BookPanel from "../BookPanel";
+import BookWriter from "../BookWriter";
 
 const styles = theme => ({
     root: {
@@ -63,11 +64,16 @@ const MainPage = props => {
                             <BookShelvePanel bookShelve={bookShelve}>
                                 {bookShelveList[index].books.map((book) =>
                                     <BookPanel>
-                                        <Grid container spacing={24}>
+                                        <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
+
                                             <Grid item xs={12}>
                                                 <BookPanelImage imageUrl={book.imageUrl}/>
                                             </Grid>
-                                            <BookName name={book.name}/>
+
+                                            <Grid container item xs={12} justify={'flex-start'}>
+                                                <BookName name={book.name}/>
+                                                <BookWriter name={book.author}/>
+                                            </Grid>
                                         </Grid>
                                     </BookPanel>
                                 )}
