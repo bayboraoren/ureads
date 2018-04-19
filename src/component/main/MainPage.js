@@ -7,6 +7,7 @@ import BookPanelImage from "../BookPanelImage";
 import BookName from "../BookName";
 import BookPanel from "../BookPanel";
 import BookWriter from "../BookWriter";
+import BookListPanel from "../BookListPanel";
 
 const styles = theme => ({
     root: {
@@ -63,19 +64,21 @@ const MainPage = props => {
                         {bookShelveList.map((bookShelve, index) =>
                             <BookShelvePanel bookShelve={bookShelve}>
                                 {bookShelveList[index].books.map((book) =>
-                                    <BookPanel>
-                                        <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
+                                    <BookListPanel>
+                                        <BookPanel>
+                                            <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
 
-                                            <Grid item xs={12}>
-                                                <BookPanelImage imageUrl={book.imageUrl}/>
-                                            </Grid>
+                                                <Grid item xs={12}>
+                                                    <BookPanelImage imageUrl={book.imageUrl}/>
+                                                </Grid>
 
-                                            <Grid container item xs={12} justify={'flex-start'}>
-                                                <BookName name={book.name}/>
-                                                <BookWriter name={book.author}/>
+                                                <Grid container item xs={12} justify={'flex-start'}>
+                                                    <BookName name={book.name}/>
+                                                    <BookWriter name={book.author}/>
+                                                </Grid>
                                             </Grid>
-                                        </Grid>
-                                    </BookPanel>
+                                        </BookPanel>
+                                    </BookListPanel>
                                 )}
                             </BookShelvePanel>
                         )}
