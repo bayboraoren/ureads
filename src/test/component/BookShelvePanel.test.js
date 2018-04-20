@@ -17,7 +17,7 @@ describe('<BookShelvePanel/>', () => {
     )
 
     it('bookshelve panel is visible', () => {
-        expect(bookShelvePanel.find(BookShelvePanel).find(Divider)).to.have.length(1)
+        expect(bookShelvePanel.find(Divider)).to.have.length(1)
     })
 
     it('bookshelve title is given title', () => {
