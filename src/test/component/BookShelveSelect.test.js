@@ -1,9 +1,10 @@
 import React from 'react'
 import {mount} from 'enzyme';
 import {expect} from 'chai'
-import {MenuItem, Select} from "material-ui";
+import {MenuItem, Paper} from "material-ui";
 import BookShelveSelect from "../../component/BookShelveSelect";
 import { createMount } from 'material-ui/test-utils';
+import {Select} from "material-ui/index";
 
 
 const expectedShelveCurrentlyReading = {id:1,title:"Currently Reading"}
@@ -27,14 +28,12 @@ describe('<BookShelveSelect/>', () => {
 
 
     it('book shelve selection is visible', () => {
-        const wrapper = mount(<BookShelveSelect shelveList={shelveList}/>)
+        const wrapper = mount(<BookShelveSelect shelveList={shelveList} selectedShelve={1}/>)
         expect(wrapper.find(Select)).to.have.length(1)
     })
 
     it('book shelve selection has shelve list', () => {
-        const wrapper = mount(<BookShelveSelect shelveList={shelveList}/>)
-        console.log("------>" + wrapper.find(Select).render().children().children()[0].name)
-        //expect(bookShelveSelect.find(Select).find(MenuItem).find({key:1}).text()).is.equal(expectedShelveCurrentlyReading)
+        //find way to solve this, material-ui and enzyme haven't got enough documentation
     })
 
 })

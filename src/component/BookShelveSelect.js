@@ -7,9 +7,12 @@ import {Paper, Select} from "material-ui/index";
 
 const styles = theme => ({
     select: {
+        fontSize: 12,
         width: '100%',
-        maxWidth: '100%',
         backgroundColor: theme.palette.background.paper,
+    },
+    menuItemClass: {
+        fontSize: 12
     }
 });
 
@@ -17,12 +20,12 @@ const styles = theme => ({
 class BookShelveSelect extends React.Component {
 
     state = {
-        shelterId: ''
-    };
+        shelterId: this.props.selectedShelve
+    }
 
     handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value })
-    };
+        this.setState({[event.target.name]: event.target.value})
+    }
 
 
     render() {
@@ -31,41 +34,36 @@ class BookShelveSelect extends React.Component {
 
         return (
             <div>
-
-                    <Select
-                        value={this.state.shelterId}
-                        onChange={this.handleChange}
-                        className={classes.select}
-                        inputProps={{
-                            name: 'shelterId',
-                        }}>
-
+                <Select
+                    value={this.state.shelterId}
+                    onChange={this.handleChange}
+                    className={classes.select}
+                    inputProps={{
+                        name: 'shelterId',
+                    }}>
 
 
-                        <MenuItem key={0}>
-                            <em>None</em>
+                    <MenuItem key={0} className={classes.menuItemClass}>
+                        <em>None</em>
+                    </MenuItem>
+
+                    {shelveList.map((shelve) =>
+                        <MenuItem key={shelve.id}
+                                  value={shelve.id}
+                                  className={classes.menuItemClass}>
+                            {shelve.title}
                         </MenuItem>
-
-
-                        {shelveList.map((shelve) =>
-                            <MenuItem key={shelve.id}
-                                      value={shelve.id}>{shelve.title}</MenuItem>
-                        )}
-
-
-
-
-                    </Select>
-
+                    )}
+                </Select>
             </div>
-
         )
     }
 
 }
 
 BookShelveSelect.propTypes = {
-    shelveList: PropTypes.array.isRequired
+    shelveList: PropTypes.array.isRequired,
+    selectedShelve: PropTypes.number.isRequired
 };
 
 
