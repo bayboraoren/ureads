@@ -120,7 +120,7 @@ const MainPage = props => {
                                                         <BookWriter name={book.author}/>
                                                     </Grid>
                                                     <Grid item xs={12}>
-                                                        <BookShelveSelect shelveList={justBookShelveList}/>
+                                                        <BookShelveSelect shelveList={justBookShelveList} selectedShelve={bookShelveList[index].id}/>
                                                     </Grid>
                                                 </Grid>
                                             </BookPanel>
