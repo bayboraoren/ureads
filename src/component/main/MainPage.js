@@ -31,14 +31,35 @@ const MainPage = props => {
                     "name": "book name 1",
                     "author": "author name 1",
                     "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                },
+                {
+                    "name": "book name 2",
+                    "author": "author name 1",
+                    "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                },
+                {
+                    "name": "book name 3",
+                    "author": "author name 1",
+                    "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                },
+                {
+                    "name": "book name 4",
+                    "author": "author name 1",
+                    "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                },
+                {
+                    "name": "book name 5",
+                    "author": "author name 1",
+                    "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
                 }
+
             ]
         },
         {
             "title": bookShelveTitle + 2,
             "books": [
                 {
-                    "name": "book name 2",
+                    "name": "book name 6",
                     "author": "author name 2",
                     "imageUrl": "https://i.pinimg.com/originals/93/89/5a/93895a8c2e6f2684f46eed06be17b538.jpg"
                 }
@@ -48,7 +69,7 @@ const MainPage = props => {
             "title": bookShelveTitle + 3,
             "books": [
                 {
-                    "name": "book name 3",
+                    "name": "book name 7",
                     "author": "author name 3",
                     "imageUrl": "https://www.varsity.co.uk/images/derived/article-objects/md5-716243ff78e6aecd61d78a2c60616aee/2837.jpeg"
                 }
@@ -63,23 +84,24 @@ const MainPage = props => {
                     <BookStorePanel>
                         {bookShelveList.map((bookShelve, index) =>
                             <BookShelvePanel bookShelve={bookShelve}>
-                                {bookShelveList[index].books.map((book) =>
-                                    <BookListPanel>
-                                        <BookPanel>
-                                            <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
-
-                                                <Grid item xs={12}>
-                                                    <BookPanelImage imageUrl={book.imageUrl}/>
+                                <BookListPanel>
+                                    <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
+                                        {bookShelveList[index].books.map((book) =>
+                                            <BookPanel>
+                                                <Grid container spacing={24} alignItems={'flex-start'}
+                                                      direction={'row'}>
+                                                    <Grid item xs={12}>
+                                                        <BookPanelImage imageUrl={book.imageUrl}/>
+                                                    </Grid>
+                                                    <Grid container item xs={12} justify={'flex-start'}>
+                                                        <BookName name={book.name}/>
+                                                        <BookWriter name={book.author}/>
+                                                    </Grid>
                                                 </Grid>
-
-                                                <Grid container item xs={12} justify={'flex-start'}>
-                                                    <BookName name={book.name}/>
-                                                    <BookWriter name={book.author}/>
-                                                </Grid>
-                                            </Grid>
-                                        </BookPanel>
-                                    </BookListPanel>
-                                )}
+                                            </BookPanel>
+                                        )}
+                                    </Grid>
+                                </BookListPanel>
                             </BookShelvePanel>
                         )}
                     </BookStorePanel>
