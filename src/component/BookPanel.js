@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from 'material-ui/styles'
-import {Card, CardMedia, Grid, Paper} from "material-ui";
+import {Card} from "material-ui";
 
 
 const styles = theme => ({
@@ -33,7 +33,7 @@ const BookPanel = (props) => {
 }
 
 BookPanel.propTypes = {
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(BookPanel);
