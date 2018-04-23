@@ -9,7 +9,6 @@ import BookPanel from "../BookPanel";
 import BookWriter from "../BookWriter";
 import BookListPanel from "../BookListPanel";
 import BookShelveSelect from "../BookShelveSelect";
-import * as BookAPI from "../../BookAPI"
 
 const styles = theme => ({
     root: {
@@ -25,40 +24,8 @@ class MainPage extends React.Component {
     bookShelveTitle = "BOOK SHELVE TITLE "
 
     state = {
-        books: [],
-        bookShelveList: {},
-    }
 
-    componentWillMount() {
-        this.callGetBooks()
-    }
-
-
-    moveBook = (book, shelveId) => {
-        console.log(book.id)
-        console.log(shelveId)
-        BookAPI.update(book, shelveId).then((books) => {
-            this.callGetBooks()
-        })
-    }
-
-
-    justBookShelveList = [{id: "currentlyReading", title: "Currently Reading"},
-        {id: "read", title: "Read"},
-        {id: "wantToRead", title: "Want To Read"}]
-
-
-    callGetBooks() {
-        BookAPI.getAll().then((books) => {
-            this.setState(() => ({
-                bookShelveList: this.processData(books)
-            }))
-        })
-    }
-
-    processData = (books) => {
-
-        /*let books = [
+        "books": [
             {
                 "title": "The Linux Command Line",
                 "subtitle": "A Complete Introduction",
@@ -378,89 +345,127 @@ class MainPage extends React.Component {
                 "id": "1wy49i-gQjIC",
                 "shelf": "read"
             }
-        ]*/
+        ],
 
-        let shelves = books.map((book) => book.shelf)
-        shelves = shelves.filter((book, index, self) =>
-            self.indexOf(book) === index
-        )
+        bookShelveList : [
+            {
+                "id": 1,
+                "title": this.bookShelveTitle + 1,
+                "books": [
+                    {
+                        id: 1,
+                        "name": "book name 1",
+                        "author": "author name 1",
+                        "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                    },
+                    {
+                        id: 2,
+                        "name": "book name 2",
+                        "author": "author name 1",
+                        "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                    },
+                    {
+                        id: 3,
+                        "name": "book name 3",
+                        "author": "author name 1",
+                        "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                    },
+                    {
+                        id: 4,
+                        "name": "book name 4",
+                        "author": "author name 1",
+                        "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                    },
+                    {
+                        id: 5,
+                        "name": "book name 5",
+                        "author": "author name 1",
+                        "imageUrl": "https://www.purplerosegraphics.com/wp-content/uploads/2017/03/Jurassicpark-1.jpg"
+                    }
 
-
-        let shelveList = {}
-        for (var i = 0; i < shelves.length; i++) {
-
-            let shelveTitle = shelves[i].split(/(?=[A-Z])/) // split words by uppercase
-            shelveTitle = shelveTitle.join(" ") // join word array with space
-            shelveTitle = shelveTitle.replace(/\b\w/g, (l) => {
-                return l.toUpperCase()
-            }) // first letter uppercase
-
-            shelveList[shelves[i]] = {id: shelves[i], title: shelveTitle}
-            let bookList = []
-            shelveList[shelves[i]].books = bookList
-        }
-
-        for (var i = 0; i < books.length; i++) {
-
-            let book = {}
-            book.id = books[i].id
-            book.title = books[i].title
-            book.authors = books[i].authors
-            book.imageUrl = books[i].imageLinks.thumbnail
-            shelveList[books[i].shelf].books.push(book)
-
-        }
-
-        return shelveList
+                ]
+            },
+            {
+                "id": 2,
+                "title": this.bookShelveTitle + 2,
+                "books": [
+                    {
+                        id: 6,
+                        "name": "book name 6",
+                        "author": "author name 2",
+                        "imageUrl": "https://i.pinimg.com/originals/93/89/5a/93895a8c2e6f2684f46eed06be17b538.jpg"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "title": this.bookShelveTitle + 3,
+                "books": [
+                    {
+                        id: 7,
+                        "name": "book name 7",
+                        "author": "author name 3",
+                        "imageUrl": "https://www.varsity.co.uk/images/derived/article-objects/md5-716243ff78e6aecd61d78a2c60616aee/2837.jpeg"
+                    }
+                ]
+            }
+        ]
     }
 
+    moveBook = (shelveId,bookId) => {
+        this.setState((currentState) => ({
+            bookShelveList:currentState.bookShelveList.filter((b) => {
+              return b.id !== bookId
+            })
+        }))
+    }
 
     render() {
+
+        const justBookShelveList = this.state.bookShelveList.map((shelve) => {
+            const retShelve = {}
+            retShelve.id = shelve.id
+            retShelve.title = shelve.title
+            return retShelve
+        })
 
         const {classes} = this.props;
         const {bookShelveList} = this.state
 
         return (
+
             <div className={classes.root}>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <BookStorePanel>
-                            {
-                                Object.keys(bookShelveList).map((bookShelve, index) =>
-                                    <BookShelvePanel bookShelve={bookShelveList[bookShelve]} key={index}>
-                                        <BookListPanel>
-                                            <Grid container spacing={24} alignItems={'flex-start'}
-                                                  direction={'row'}>
-                                                {bookShelveList[bookShelve].books.map((book) =>
-                                                    <BookPanel key={book.id}>
-                                                        <Grid container spacing={24} alignItems={'flex-start'}
-                                                              direction={'row'}>
-                                                            <Grid item xs={12}>
-                                                                <BookShelveSelect
-                                                                    shelveList={this.justBookShelveList}
-                                                                    selectedShelveId={bookShelveList[bookShelve].id}
-                                                                    selectedShelveTitle={bookShelveList[bookShelve].title}
-                                                                    book={book}
-                                                                    onMoveBook={this.moveBook}/>
-                                                            </Grid>
-                                                            <Grid item xs={12}>
-                                                                <BookPanelImage imageUrl={book.imageUrl}/>
-                                                            </Grid>
-                                                            <Grid container item xs={12}>
-                                                                <BookName title={book.title}/>
-                                                            </Grid>
-                                                            <Grid item xs={12}>
-                                                                <BookWriter authors={book.authors}/>
-                                                            </Grid>
+                            {bookShelveList.map((bookShelve, index) =>
+                                <BookShelvePanel bookShelve={bookShelve} key={index}>
+                                    <BookListPanel>
+                                        <Grid container spacing={24} alignItems={'flex-start'} direction={'row'}>
+                                            {bookShelveList[index].books.map((book) =>
+                                                <BookPanel key={book.id}>
+                                                    <Grid container spacing={24} alignItems={'flex-start'}
+                                                          direction={'row'}>
+                                                        <Grid item xs={12}>
+                                                            <BookPanelImage imageUrl={book.imageUrl}/>
                                                         </Grid>
-                                                    </BookPanel>
-                                                )}
-                                            </Grid>
-                                        </BookListPanel>
-                                    </BookShelvePanel>
-                                )
-
-                            }
+                                                        <Grid container item xs={12} justify={'flex-start'}>
+                                                            <BookName name={book.name}/>
+                                                            <BookWriter name={book.author}/>
+                                                        </Grid>
+                                                        <Grid item xs={12}>
+                                                            <BookShelveSelect shelveList={justBookShelveList}
+                                                                              selectedShelve={bookShelveList[index].id}
+                                                                              selectedBook={book.id}
+                                                                              onMoveBook={this.moveBook}/>
+                                                        </Grid>
+                                                    </Grid>
+                                                </BookPanel>
+                                            )}
+                                        </Grid>
+                                    </BookListPanel>
+                                </BookShelvePanel>
+                            )}
                         </BookStorePanel>
                     </Grid>
                 </Grid>
@@ -469,9 +474,4 @@ class MainPage extends React.Component {
     }
 }
 
-export default withStyles(styles)
-
-(
-    MainPage
-)
-;
+export default withStyles(styles)(MainPage);

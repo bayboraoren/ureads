@@ -1,28 +1,26 @@
 import React from 'react'
-import {CardMedia, withStyles} from "material-ui"
+import {CardMedia, Paper, withStyles} from "material-ui"
 import PropTypes from 'prop-types'
 
 const styles = {
-    card: {
-        maxWidth: 345,
-    },
     media: {
-        height: 300,
-    },
-};
+        width:200,
+        height: 256,
+    }
+}
 
 const BookPanelImage = (props) => {
 
-    const {classes,imageUrl} = props
+    const {classes, imageUrl} = props
 
-    return(
-        <div>
+    return (
+        <Paper>
             <CardMedia
                 className={classes.media}
                 image={imageUrl}
                 title="Contemplative Reptile"
             />
-        </div>
+        </Paper>
     );
 
 }

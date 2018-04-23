@@ -8,11 +8,11 @@ const styles = theme => ({})
 
 const BookName = (props) => {
 
-    const {name} = props
+    const {title} = props
 
     return (
-        <Typography variant="title">
-            {name}
+        <Typography variant="body1">
+            {title}
         </Typography>
     )
 
@@ -20,7 +20,7 @@ const BookName = (props) => {
 }
 
 BookName.propTypes = {
-    name: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
 };
 
 

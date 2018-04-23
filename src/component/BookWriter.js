@@ -4,23 +4,32 @@ import {withStyles} from "material-ui/styles/index";
 import PropTypes from "prop-types";
 
 
-const styles = theme => ({})
+const styles = theme => ({
+
+    author:{
+    }
+
+})
 
 const BookWriter = (props) => {
 
-    const {name} = props
+    const {authors,classes} = props
 
     return (
-        <Typography variant="subheading" color="textSecondary">
-            {name}
-        </Typography>
+        <div className={classes.author}>
+            {authors.map((author) =>
+                <Typography variant="body2" color="textSecondary" align={'left'} key={author}>
+                    {author}
+                    </Typography>
+            )}
+        </div>
     )
 
 
 }
 
 BookWriter.propTypes = {
-    name: PropTypes.string.isRequired
+    authors: PropTypes.array.isRequired
 };
 
 

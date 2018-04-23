@@ -5,17 +5,11 @@ import {Paper} from "material-ui";
 
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1
-    },
-    card: {
+    paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
         marginLeft: 80
-    },
-    media: {
-        height: 200,
     },
 });
 
@@ -24,7 +18,7 @@ const BookListPanel = (props) => {
     return (
         <div>
             <br/>
-            <Paper className={classes.card}>
+            <Paper className={classes.paper}>
                 {props.children}
             </Paper>
         </div>
