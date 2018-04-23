@@ -8,7 +8,6 @@ import Grid from 'material-ui/Grid';
 
 const styles = theme => ({
     paper: {
-        height: '100%',
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,

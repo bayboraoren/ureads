@@ -7,12 +7,13 @@ import {Paper, Select} from "material-ui/index";
 
 const styles = theme => ({
     select: {
-        fontSize: 12,
+        fontSize: 18,
         width: '100%',
         backgroundColor: theme.palette.background.paper,
+        opacity: 0.4
     },
     menuItemClass: {
-        fontSize: 12
+        fontSize: 18
     }
 });
 
@@ -20,11 +21,12 @@ const styles = theme => ({
 class BookShelveSelect extends React.Component {
 
     state = {
-        shelterId: this.props.selectedShelve
+        shelveId: this.props.selectedShelveId
     }
 
     handleChange = event => {
         this.setState({[event.target.name]: event.target.value})
+        this.props.onMoveBook(this.props.book, event.target.value)
     }
 
 
@@ -35,11 +37,11 @@ class BookShelveSelect extends React.Component {
         return (
             <div>
                 <Select
-                    value={this.state.shelterId}
+                    value={this.state.shelveId}
                     onChange={this.handleChange}
                     className={classes.select}
                     inputProps={{
-                        name: 'shelterId',
+                        name: 'shelveId',
                     }}>
 
 
@@ -63,7 +65,10 @@ class BookShelveSelect extends React.Component {
 
 BookShelveSelect.propTypes = {
     shelveList: PropTypes.array.isRequired,
-    selectedShelve: PropTypes.number.isRequired
+    selectedShelveId: PropTypes.string.isRequired,
+    selectedShelveTitle: PropTypes.string.isRequired,
+    book: PropTypes.object.isRequired,
+    onMoveBook: PropTypes.func.isRequired
 };
 
 

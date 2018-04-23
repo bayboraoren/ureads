@@ -6,14 +6,15 @@ import {Card} from "material-ui";
 
 const styles = theme => ({
     root: {
-        flexGrow: 1
+
     },
     card: {
         width: 200,
-        padding: theme.spacing.unit * 2,
+        height: 450,
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        marginLeft: 80
+        padding: 25,
+        margin: 20
     },
     media: {
         height: 200,
