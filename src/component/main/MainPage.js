@@ -16,6 +16,7 @@ import BookSearch from "../BookSearch";
 import * as Util from '../../Util'
 import {Button} from "material-ui";
 import AddIcon from '@material-ui/icons/Add';
+import * as BookUtil from "../../BookUtil";
 
 const styles = theme => ({
     root: {
@@ -41,25 +42,18 @@ class MainPage extends React.Component {
     }
 
     componentWillMount() {
-        this.callGetBooks()
+        this.getBooks()
     }
-
-
-    justBookShelveList = [
-        {id: "none", title: "None"},
-        {id: "currentlyReading", title: "Currently Reading"},
-        {id: "read", title: "Read"},
-        {id: "wantToRead", title: "Want To Read"}]
 
 
     moveBook = (book, shelveId) => {
         BookAPI.update(book, shelveId).then((books) => {
-            this.callGetBooks()
+            this.getBooks()
         })
     }
 
 
-    callGetBooks() {
+    getBooks() {
         BookAPI.getAll().then((books) => {
             this.books = books
             this.setState(() => ({
@@ -92,7 +86,7 @@ class MainPage extends React.Component {
                                                                   direction={'row'}>
                                                                 <Grid item xs={12}>
                                                                     <BookShelveSelect
-                                                                        shelveList={this.justBookShelveList}
+                                                                        shelveList={BookUtil.bookShelveList}
                                                                         selectedShelveId={bookShelveList[bookShelve].id}
                                                                         book={book}
                                                                         onMoveBook={this.moveBook}/>

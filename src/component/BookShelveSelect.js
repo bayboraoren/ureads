@@ -33,8 +33,6 @@ class BookShelveSelect extends React.Component {
 
     render() {
 
-        console.log(this.props.selectedShelveId)
-
         const {classes, shelveList} = this.props;
 
         return (

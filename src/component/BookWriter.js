@@ -9,7 +9,7 @@ const styles = theme => ({
 
 const BookWriter = (props) => {
 
-    const {authors, classes} = props
+    const {authors} = props
 
     return (
         <div>
