@@ -7,12 +7,12 @@ import BookWriter from "../../component/BookWriter";
 
 describe('<BookWriter/>', () => {
 
-    const bookWriterName = "MICHAEL CRICHTON"
-    const bookWriter = mount(<BookWriter name={bookWriterName}/>)
+    const authors = ["Author1","Author2","Author3"]
+    const bookWriter = mount(<BookWriter name={authors[0]} authors={authors}/>)
 
 
     it('book writer is visible', () => {
-        expect(bookWriter.find(Typography).text()).is.equal(bookWriterName)
+        expect(bookWriter.find(Typography).first().text()).is.equal(authors[0])
     })
 
 

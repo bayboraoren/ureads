@@ -18,7 +18,6 @@ const styles = theme => ({
 
 });
 
-
 const BookStorePanel = (props) =>{
     const {classes} = props;
     return (

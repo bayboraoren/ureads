@@ -25,7 +25,6 @@ const BookPanel = (props) => {
     const {classes} = props;
     return (
         <div>
-            <br/>
             <Card className={classes.card}>
                 {props.children}
             </Card>
