@@ -23,7 +23,7 @@ It has got 2 application screen
 ![Alt text](images/mainPage.png?raw=true "Main Page")
 #### Search Page
 - `Search Page` is to search Book by text
-![Alt text](images/searchpage.png?raw=true "Search Page")
+![Alt text](images/searchPage.png?raw=true "Search Page")
 
 ## Installation
 Before installation you need `npm`. For npm information please check [here](https://www.npmjs.com/get-npm)
