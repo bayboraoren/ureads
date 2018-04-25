@@ -13,6 +13,8 @@ const BookPanelImage = (props) => {
 
     const {classes, imageUrl} = props
 
+    console.log(imageUrl)
+
     return (
         <Paper>
             <CardMedia

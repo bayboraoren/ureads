@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Grid, withStyles} from "material-ui"
+import {Grid, withStyles} from "material-ui"
 import SearchBar from 'material-ui-search-bar'
 import BookPanel from "./BookPanel"
 import BookShelveSelect from "./BookShelveSelect"
@@ -10,6 +10,7 @@ import * as BookUtil from "../BookUtil"
 import PropTypes from 'prop-types'
 import {Link} from "react-router-dom";
 import ArrowBack from '@material-ui/icons/ArrowBack';
+import imageNotFound from './imageNotFound.jpg'
 
 const styles = theme => ({
     fab: {
@@ -51,15 +52,18 @@ class BookSearch extends React.Component {
 
                     <Grid item xs={10}>
                         <SearchBar
+                            onChange={(query) => {
+                                BookUtil.searchBook(query, this)
+                            }}
                             onRequestSearch={(query) => {
-                                BookUtil.searchBook(query,this)
+                                BookUtil.searchBook(query, this)
                             }}
                         />
                     </Grid>
                 </Grid>
 
                 <Grid container spacing={24}
-                     className={classes.container}>
+                      className={classes.container}>
                     {books.map((book) =>
                         <BookPanel key={book.id}>
                             <Grid container spacing={24} alignItems={'flex-start'}
@@ -67,13 +71,14 @@ class BookSearch extends React.Component {
 
                                 <Grid item xs={12}>
                                     <BookShelveSelect
-                                        shelveList={BookUtil.justBookShelveList}
+                                        shelveList={BookUtil.bookShelveList}
                                         selectedShelveId={BookUtil.findBook(booksWithShelve, book)}
                                         book={book}
                                         onMoveBook={this.props.onMoveBook}/>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <BookPanelImage imageUrl={book.imageLinks.thumbnail}/>
+                                    <BookPanelImage
+                                        imageUrl={book.imageLinks === undefined ? imageNotFound : book.imageLinks.thumbnail}/>
                                 </Grid>
                                 <Grid container item xs={12}>
                                     <BookName title={book.title}/>
