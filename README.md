@@ -35,3 +35,5 @@ Before installation you need `npm`. For npm information please check [here](http
 1. run `npm start` command
 2. open `browser`
 3. write `localhost:3000` to url bar and `press enter` to test application 
+
+Thank you...
